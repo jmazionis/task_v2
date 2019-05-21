@@ -1,17 +1,44 @@
 import * as React from 'react';
 import '../App.css';
-import { DEFAULT_CATEGORY_LEVEL_OFFSET_PX } from '../constants';
-import { TreeNode } from '../common/TreeNode';
+import { RecursiveTreeNode } from './RecursiveTreeNode';
+import { Category } from '../models/category';
+import { createCategoryMap } from '../utils';
+import { RecursiveCategory } from './recursiveCategory';
 
-export interface RecursiveTreeProps {}
+export interface RecursiveTreeProps {
+    categories: Category[];
+}
 
-export interface RecursiveTreeState {}
+export interface RecursiveTreeState {
+    category: RecursiveCategory;
+}
 
 export class RecursiveTree extends React.PureComponent<
     RecursiveTreeProps,
     RecursiveTreeState
 > {
+    constructor(props: RecursiveTreeProps) {
+        super(props);
+
+        // this.state = {
+        //     category: props.category
+        // };
+        console.log(createCategoryMap(props.categories));
+    }
+
+    handleAddCategoryClicked = (category: Category) => {
+        // this.setState(prevState => ({
+        //     categories: [...prevState.categories, createCategory()]
+        // }));
+    };
+
     render() {
-        return <TreeNode label="Omega" />;
+        return (
+            <h2>Hello</h2>
+            // <RecursiveTreeNode
+            //     onAddCategoryClicked={this.handleAddCategoryClicked}
+            //     category={this.props.category}
+            // />
+        );
     }
 }
