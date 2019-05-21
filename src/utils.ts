@@ -1,4 +1,5 @@
 import { Category } from './models/category';
+import { RecursiveCategory } from './models/recursiveCategory';
 
 export const generateId = (function(n: number) {
     return function() {
@@ -7,7 +8,7 @@ export const generateId = (function(n: number) {
 })(0);
 
 export const generateCategoryLabel = (): string => {
-    const nodeNames = ['Alpha', 'Bravo', 'Charlie', 'Delta', 'Gama'];
+    const nodeNames = ['Alpha', 'Bravo', 'Charlie', 'Delta', 'Echo', 'Gama'];
     const randomIndex = Math.floor(Math.random() * nodeNames.length);
     return nodeNames[randomIndex];
 };
@@ -20,15 +21,23 @@ export const createCategory = (parentId?: string): Category => {
     };
 };
 
-export const createCategoryMap = (
-    categories: Category[]
-): Map<string, Category[]> => {
-    const map = new Map();
-    for (const category of categories) {
-        const subCategories = categories.filter(
-            c => c.parentId === category.parentId
-        );
-        map.set(category.parentId, subCategories);
-    }
-    return map;
+export const unflatten = (
+    categories: Category[],
+) => {
+    const cMap = {};
+
+    // for (const category of categories) {
+    //     if (!cMap[category.parentId]) {
+    //         cMap[category.parentId] = [];
+    //     } else {
+    //         cMap[category.parentId].push(category);
+    //     }
+    // }
+    // for (const category of categories) {
+    //     const subCategories = categories.filter(
+    //         c => c.parentId === category.parentId
+    //     );
+    //     map.set(category.parentId, subCategories);
+    // }
+    return null;
 };

@@ -3,7 +3,7 @@ import '../App.css';
 import { RecursiveTreeNode } from './RecursiveTreeNode';
 import { Category } from '../models/category';
 import { createCategoryMap } from '../utils';
-import { RecursiveCategory } from './recursiveCategory';
+import { RecursiveCategory } from '../models/recursiveCategory';
 
 export interface RecursiveTreeProps {
     categories: Category[];
